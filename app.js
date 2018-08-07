@@ -15,11 +15,11 @@ const searchRouter = require('./routes/search');
 
 const app = express();
 
-app.set('upstream', process.env.UPSTREAM);
-app.set('api-token-header', process.env.API_TOKEN_HEADER);
+app.set('upstream', process.env.UPSTREAM || 'http://localhost:9200/');
+app.set('api-token-header', process.env.API_TOKEN_HEADER || 'X-API-Token');
 app.set('api-token-secret', process.env.API_TOKEN_SECRET);
-app.set('openam-server', process.env.OPENAM_SERVER);
-app.set('openam-cookie', process.env.OPENAM_COOKIE);
+app.set('openam-server', process.env.OPENAM_SERVER || 'https://websso.it.northwestern.edu/amserver/');
+app.set('openam-cookie', process.env.OPENAM_COOKIE || 'openAMssoToken');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
