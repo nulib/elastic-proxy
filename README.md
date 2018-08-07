@@ -26,19 +26,19 @@ $ yarn start
 
 ### Testing
 
-1. In a browser, go to http://devbox.library.northwestern.edu/auth/login
+1. In a browser, go to http://devbox.library.northwestern.edu:3334/auth/login
 2. Log into WebSSO (if necessary)
 3. You should be redirected to a page with a JSON hash containing your auth token.
 4. Open a shell and:
 
     ```bash
-    $ curl -H "X-API-Token: YOUR_AUTH_TOKEN" http://devbox.library.northwestern.edu/auth/whoami
+    $ curl -H "X-API-Token: YOUR_AUTH_TOKEN" http://devbox.library.northwestern.edu:3334/auth/whoami
     ```
 5. The server should respond with your user details.
 
 ### Use
 
-Set your client application's Elasticsearch endpoint to `http://devbox.library.northwestern.edu/search/`
+Set your client application's Elasticsearch endpoint to `http://devbox.library.northwestern.edu:3334/search/`
 
 ## Note
 
