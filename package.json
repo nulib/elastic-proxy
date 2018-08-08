@@ -1,11 +1,12 @@
 {
-  "name": "frontend-api-nodejs",
-  "version": "0.0.0",
+  "name": "elastic-proxy",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
+    "aws-serverless-express": "^3.2.0",
     "body-parser": "~1.18.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -18,6 +19,7 @@
     "request": "~2.87.0"
   },
   "devDependencies": {
+    "claudia": "~5.1.0",
     "nodemon": "~1.18.3"
   }
 }

@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "elastic-proxy-executor",
+    "name": "elastic-proxy",
+    "region": "us-east-1"
+  },
+  "api": {
+    "id": "bxzhc8nucl"
+  }
+}
