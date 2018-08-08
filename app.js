@@ -20,6 +20,7 @@ app.set('api-token-header', process.env.API_TOKEN_HEADER || 'X-API-Token');
 app.set('api-token-secret', process.env.API_TOKEN_SECRET);
 app.set('openam-server', process.env.OPENAM_SERVER || 'https://websso.it.northwestern.edu/amserver/');
 app.set('openam-cookie', process.env.OPENAM_COOKIE || 'openAMssoToken');
+app.set('openam-cookie-header', process.env.OPENAM_COOKIE_HEADER || 'X-OpenAM-SSO-Token');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
