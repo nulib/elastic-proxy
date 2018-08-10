@@ -10,10 +10,11 @@ router.options(/.+/, (req, res, next) => {
 })
 
 router.get('/login', (req, res, next) => {
-  let server = req.app.get('openam-server');
-  let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  let returnUrl = url.resolve(fullUrl, '/auth/callback');
-  res.postProcess().redirect(url.resolve(server, 'UI/Login?goto=' + returnUrl));
+  let redirect = url.parse(url.resolve(req.app.get('openam-server'), 'UI/Login'), true);
+  let current  = req.protocol + '://' + req.get('host') + req.originalUrl;
+  redirect.query.goto = req.query.goto || req.get('Referer');
+
+  res.postProcess().redirect(url.format(redirect));
 });
 
 router.get('/callback', (req, res, next) => {
