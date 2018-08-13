@@ -24,7 +24,7 @@ router.get('/callback', (req, res, next) => {
         res.postProcess().send({ token: null })
       } else {
         let jwtToken = authUtils.token(user, req.app.get('api-token-secret'));
-        res.postProcess().send({ token: jwtToken });
+        res.postProcess().send({ token: jwtToken, user: user });
       }
     })
     .catch((err) => { console.log(err) })
