@@ -10,5 +10,7 @@ function passthru(req, res, next) {
 router.options('/:index/_m?search', passthru);
 router.get('/:index/_m?search', passthru);
 router.post('/:index/_m?search', passthru);
+router.get('/:index/_all/:id', passthru);
+router.head('/', passthru);
 
 module.exports = router;
