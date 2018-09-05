@@ -33,6 +33,8 @@ $ yarn start
 
     ```bash
     $ curl -H "X-API-Token: YOUR_AUTH_TOKEN" http://devbox.library.northwestern.edu:3334/auth/whoami
+    # or
+    $ curl -H "Authorization: Bearer YOUR_AUTH_TOKEN" http://devbox.library.northwestern.edu:3334/auth/whoami
     ```
 5. The server should respond with your user details.
 
