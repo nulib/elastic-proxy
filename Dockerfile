@@ -1,10 +1,9 @@
 FROM node:10-alpine
 MAINTAINER Michael B. Klein
-COPY . /home/node/app
-RUN npm install yarn -g && \
-    chown -R node:node /home/node/app
+RUN npm install yarn -g
+COPY --chown=node:node . /var/app
 USER node
-WORKDIR /home/node/app
+WORKDIR /var/app
 RUN yarn install
 CMD yarn start
 EXPOSE 3334

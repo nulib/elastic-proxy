@@ -21,9 +21,11 @@ router.get('/callback', (req, res, next) => {
   authUtils.redeemSsoToken(req)
     .then((user) => {
       if (user == null) {
+        res.clearCookie(res.app.get('api-token-cookie'));
         res.postProcess().send({ token: null })
       } else {
         let jwtToken = authUtils.token(user, req.app.get('api-token-secret'));
+        res.cookie(res.app.get('api-token-cookie'), jwtToken, { domain: res.app.get('auth-domain') });
         res.postProcess().send({ token: jwtToken, user: user });
       }
     })
