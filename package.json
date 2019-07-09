@@ -23,7 +23,7 @@
     "request": "~2.87.0"
   },
   "devDependencies": {
-    "claudia": "~5.1.0",
+    "claudia": "~5.5.0",
     "nodemon": "~1.18.3"
   }
 }

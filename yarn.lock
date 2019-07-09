@@ -142,24 +142,10 @@ atob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
 
-aws-sdk@^2.251.1:
-  version "2.287.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.287.0.tgz#1f43b4feabde00d8d645fcdfd679c435763dc187"
-  dependencies:
-    buffer "4.9.1"
-    events "1.1.1"
-    ieee754 "1.1.8"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    uuid "3.1.0"
-    xml2js "0.4.19"
-
-aws-sdk@^2.422.0:
-  version "2.422.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.422.0.tgz#d875ca4098ced6f47d466f4c7addf8a79332651f"
-  integrity sha512-t/hUQcRVhbw3EPS84d7YqwIAMSXHT5V/s6m0ivgLjIXnzRng0qRD1KGTkoLkXnY+X/o/NdvVIIfLfO4VF8xqMw==
+aws-sdk@^2.422.0, aws-sdk@^2.454.0:
+  version "2.489.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.489.0.tgz#5ca376546dd3e912febf3114d2bcfa4d82c5584a"
+  integrity sha512-P85rLUWpO2DAG/ZQoOscNiwTKY4LgWNCHarw7RACGt0vOGiMkuKL0JN+FvurcmDEBj0xRUXsKDMfwWHDFhA2Jw==
   dependencies:
     buffer "4.9.1"
     events "1.1.1"
@@ -419,12 +405,13 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-claudia@~5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/claudia/-/claudia-5.1.0.tgz#1303a811e14a58a8158793819e98ffa5cda9adf5"
+claudia@~5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/claudia/-/claudia-5.5.0.tgz#203f4283da7157a857919a60761e569afa348c84"
+  integrity sha512-gGPZhqBJJxkc9U6S6PKnUEABZCFB1hDRSkcc4eRlGCGmMgZMv3ty0o/9swJud3AU8Db/Kb5kvo/Ez7foLtc2Kw==
   dependencies:
     archiver "^2.0.0"
-    aws-sdk "^2.251.1"
+    aws-sdk "^2.454.0"
     fs-extra "^6.0.1"
     glob "^7.1.2"
     gunzip-maybe "^1.4.0"
@@ -2509,10 +2496,6 @@ util-deprecate@~1.0.1:
 utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
-
-uuid@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
 uuid@3.3.2, uuid@^3.1.0:
   version "3.3.2"
