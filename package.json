@@ -6,7 +6,7 @@
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
-    "aws-sdk": "^2.422.0",
+    "aws-sdk": "^2.490.0",
     "aws-serverless-express": "^3.2.0",
     "body-parser": "~1.18.3",
     "cookie-parser": "~1.4.3",
