@@ -6,7 +6,6 @@ const createError  = require('http-errors');
 const express      = require('express');
 const honeybadger  = require('honeybadger');
 const ndjson       = require('./lib/ndjson');
-const path         = require('path');
 const cookieParser = require('cookie-parser');
 const logger       = require('morgan');
 const postProcess  = require('./lib/post-process');
