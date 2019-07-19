@@ -153,7 +153,7 @@ atob@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.1.tgz#ae2d5a729477f289d60dd7f96a6314a22dd6c22a"
 
-aws-sdk@^2.251.1, aws-sdk@^2.495.0:
+aws-sdk@^2.454.0, aws-sdk@^2.495.0:
   version "2.495.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.495.0.tgz#0b0ad8fcf581cb7bb858864fab88d461f0e67677"
   integrity sha512-KG2nqF3biiAliMJpbavM0tLGzhcLkgJMHQ/q84+Wi5kc6+mjPSbtnctWYnvAFwoRiiygx82FA4Fx5ShnHOqinw==
@@ -423,12 +423,13 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-claudia@~5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/claudia/-/claudia-5.1.0.tgz#1303a811e14a58a8158793819e98ffa5cda9adf5"
+claudia@~5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/claudia/-/claudia-5.6.0.tgz#aa17855059023b29e7e32303af0924978f58b286"
+  integrity sha512-CWtj6o4rRi2KJK2cetQv3DKqujlISyH8JT3EN7PDPsEikkBg1AZ5cXSeugXHqczmWVoS+vG9tROppTjmz0kVHQ==
   dependencies:
     archiver "^2.0.0"
-    aws-sdk "^2.251.1"
+    aws-sdk "^2.454.0"
     fs-extra "^6.0.1"
     glob "^7.1.2"
     gunzip-maybe "^1.4.0"
