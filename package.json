@@ -20,7 +20,7 @@
     "lodash.isobject": "~3.0.2",
     "morgan": "~1.9.1",
     "ndjson": "~1.5.0",
-    "request": "~2.87.0"
+    "request": "~2.88.0"
   },
   "devDependencies": {
     "claudia": "~5.1.0",
