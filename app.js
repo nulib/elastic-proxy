@@ -30,8 +30,8 @@ app.set('openam-cookie', process.env.OPENAM_COOKIE || 'openAMssoToken');
 app.set('openam-cookie-header', process.env.OPENAM_COOKIE_HEADER || 'X-OpenAM-SSO-Token');
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.text({type: 'application/x-ndjson'}));
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.text({limit: '5mb', type: 'application/x-ndjson'}));
 app.use(ndjson.ndjson());
 app.use(cookieParser());
 app.use(authUtils.user());
