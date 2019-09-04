@@ -28,6 +28,8 @@ router.post('/_search/scroll', passthru);
 
 router.get('/:index/_all/:id', passthru);
 router.post('/:index/_all/:id', passthru);
+router.get('/:index/_doc/:id', passthru);
+router.post('/:index/_doc/:id', passthru);
 
 router.get('/:index/_m?search', passthru);
 router.post('/:index/_m?search', passthru);
