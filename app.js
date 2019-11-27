@@ -10,9 +10,10 @@ const cookieParser = require('cookie-parser');
 const logger       = require('morgan');
 const postProcess  = require('./lib/post-process');
 
-const authRouter   = require('./routes/auth');
-const searchRouter = require('./routes/search');
-const statusRouter = require('./routes/status');
+const authRouter    = require('./routes/auth');
+const explainRouter = require('./routes/explain');
+const searchRouter  = require('./routes/search');
+const statusRouter  = require('./routes/status');
 const app = express();
 
 honeybadger.configure({
@@ -38,6 +39,7 @@ app.use(authUtils.user());
 app.use(postProcess());
 
 app.use('/auth', authRouter);
+app.use('/explain', explainRouter);
 app.use('/search', searchRouter);
 app.use('/status', statusRouter);
 
