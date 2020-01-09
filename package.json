@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "deploy": "claudia update",
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
