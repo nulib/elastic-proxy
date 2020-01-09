@@ -20,6 +20,7 @@ router.get('/login', (req, res, next) => {
 router.get('/callback', (req, res, next) => {
   authUtils.redeemSsoToken(req)
     .then((user) => {
+      console.log(`${user.uid} successfully authenticated`)
       if (user == null) {
         res.clearCookie(res.app.get('api-token-cookie'));
         res.postProcess().send({ token: null })

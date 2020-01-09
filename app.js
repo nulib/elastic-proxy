@@ -30,7 +30,7 @@ app.set('openam-server', process.env.OPENAM_SERVER || 'https://websso.it.northwe
 app.set('openam-cookie', process.env.OPENAM_COOKIE || 'openAMssoToken');
 app.set('openam-cookie-header', process.env.OPENAM_COOKIE_HEADER || 'X-OpenAM-SSO-Token');
 
-app.use(logger('dev'));
+app.use(logger(process.env.LOGGING_MODE || 'short'));
 app.use(bodyParser.json({limit: '5mb'}));
 app.use(bodyParser.text({limit: '5mb', type: 'application/x-ndjson'}));
 app.use(ndjson.ndjson());
