@@ -12,7 +12,7 @@ router.options(/.+/, (req, res, next) => {
 
 router.get("/login", (req, res, next) => {
   let callbackUrl =
-    req.protocol + "://" + req.get("host") + req.baseUrl + "/callback";
+    "https://" + req.get("host") + req.baseUrl + "/callback";
   res.cookie(res.app.get("nusso-redirect-url"), req.headers.referer);
 
   axios
