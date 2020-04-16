@@ -21,6 +21,10 @@ jobs:
           command: SSL_CERT= SSL_KEY= yarn start
           background: true
       - run:
+          name: Wait for server
+          shell: /bin/sh
+          command: wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:3334/auth/whoami -O /dev/null
+      - run:
           name: Tests
           command: yarn test
 workflows:
