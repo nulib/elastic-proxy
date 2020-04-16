@@ -1,0 +1,33 @@
+---
+version: 2.1
+jobs:
+  test:
+    working_directory: ~/elastic-proxy
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install JS Dependencies
+          command: yarn install
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/elastic-proxy/node_modules
+      - run:
+          name: Start server
+          command: SSL_CERT= SSL_KEY= yarn start
+          background: true
+      - run:
+          name: Wait for server
+          shell: /bin/sh
+          command: wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:3334/auth/whoami -O /dev/null
+      - run:
+          name: Tests
+          command: yarn test
+workflows:
+  ci:
+    jobs:
+      - test
