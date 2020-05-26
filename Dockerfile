@@ -1,6 +1,4 @@
-FROM node:10-alpine
-MAINTAINER Michael B. Klein
-RUN npm install yarn -g
+FROM node:12-alpine
 COPY --chown=node:node . /var/app
 USER node
 WORKDIR /var/app
