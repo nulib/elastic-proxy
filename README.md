@@ -14,7 +14,7 @@ $ yarn install
 
 Create a file called `.env` in the project root directory in the following format:
 ```
-UPSTREAM=http://elasticsearch-server.example.edu:9200/
+UPSTREAM=http://localhost:9201/
 API_TOKEN_SECRET=[SOME_LONG_SUPER_SECRET_TOKEN]
 ```
 (There are other settings but you will probably never need to use anything but their defaults.)
@@ -26,21 +26,21 @@ $ yarn start
 
 ### Testing
 
-1. In a browser, go to http://devbox.library.northwestern.edu:3334/auth/login
+1. In a browser, go to https://devbox.library.northwestern.edu:3334/auth/login
 2. Log into WebSSO (if necessary)
 3. You should be redirected to a page with a JSON hash containing your auth token.
 4. Open a shell and:
 
     ```bash
-    $ curl -H "X-API-Token: YOUR_AUTH_TOKEN" http://devbox.library.northwestern.edu:3334/auth/whoami
+    $ curl -H "X-API-Token: YOUR_AUTH_TOKEN" https://devbox.library.northwestern.edu:3334/auth/whoami
     # or
-    $ curl -H "Authorization: Bearer YOUR_AUTH_TOKEN" http://devbox.library.northwestern.edu:3334/auth/whoami
+    $ curl -H "Authorization: Bearer YOUR_AUTH_TOKEN" https://devbox.library.northwestern.edu:3334/auth/whoami
     ```
 5. The server should respond with your user details.
 
 ### Use
 
-Set your client application's Elasticsearch endpoint to `http://devbox.library.northwestern.edu:3334/search/`
+Set your client application's Elasticsearch endpoint to `https://devbox.library.northwestern.edu:3334/search/`
 
 ## Note
 

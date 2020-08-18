@@ -12,6 +12,7 @@ const postProcess = require("./lib/post-process");
 
 const authRouter = require("./routes/auth");
 const explainRouter = require("./routes/explain");
+const resolveRouter = require("./routes/resolve");
 const searchRouter = require("./routes/search");
 const statusRouter = require("./routes/status");
 const app = express();
@@ -62,6 +63,7 @@ app.use(postProcess());
 
 app.use("/auth", authRouter);
 app.use("/explain", explainRouter);
+app.use("/resolve", resolveRouter);
 app.use("/search", searchRouter);
 app.use("/status", statusRouter);
 
