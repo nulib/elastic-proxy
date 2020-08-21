@@ -1,0 +1,58 @@
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_open_empty" } }
+{ "id": "scalar_open_empty", "title": "open_empty", "model": { "name": "Image" }, "visibility": "open" }
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_open_published" } }
+{ "id": "scalar_open_published", "title": "open_published", "model": { "name": "Image" }, "visibility": "open", "published": true }
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_open_unpublished" } }
+{ "id": "scalar_open_unpublished", "title": "open_unpublished", "model": { "name": "Image" }, "visibility": "open", "published": false }
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_authenticated_empty" } }
+{ "id": "scalar_authenticated_empty", "title": "authenticated_empty", "model": { "name": "Image" }, "visibility": "authenticated" }
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_authenticated_published" } }
+{ "id": "scalar_authenticated_published", "title": "authenticated_published", "model": { "name": "Image" }, "visibility": "authenticated", "published": true }
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_authenticated_unpublished" } }
+{ "id": "scalar_authenticated_unpublished", "title": "authenticated_unpublished", "model": { "name": "Image" }, "visibility": "authenticated", "published": false }
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_restricted_empty" } }
+{ "id": "scalar_restricted_empty", "title": "restricted_empty", "model": { "name": "Image" }, "visibility": "restricted" }
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_restricted_published" } }
+{ "id": "scalar_restricted_published", "title": "restricted_published", "model": { "name": "Image" }, "visibility": "restricted", "published": true }
+{ "index": { "_index": "scalar_visibility", "_type": "_doc", "_id": "scalar_restricted_unpublished" } }
+{ "id": "scalar_restricted_unpublished", "title": "restricted_unpublished", "model": { "name": "Image" }, "visibility": "restricted", "published": false }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_open_empty" } }
+{ "id": "object_open_empty", "title": "open_empty", "model": { "name": "Image" }, "visibility": { "id": "OPEN" } }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_open_published" } }
+{ "id": "object_open_published", "title": "open_published", "model": { "name": "Image" }, "visibility": { "id": "OPEN" }, "published": true }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_open_unpublished" } }
+{ "id": "object_open_unpublished", "title": "open_unpublished", "model": { "name": "Image" }, "visibility": { "id": "OPEN" }, "published": false }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_authenticated_empty" } }
+{ "id": "object_authenticated_empty", "title": "authenticated_empty", "model": { "name": "Image" }, "visibility": { "id": "AUTHENTICATED" } }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_authenticated_published" } }
+{ "id": "object_authenticated_published", "title": "authenticated_published", "model": { "name": "Image" }, "visibility": { "id": "AUTHENTICATED" }, "published": true }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_authenticated_unpublished" } }
+{ "id": "object_authenticated_unpublished", "title": "authenticated_unpublished", "model": { "name": "Image" }, "visibility": { "id": "AUTHENTICATED" }, "published": false }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_restricted_empty" } }
+{ "id": "object_restricted_empty", "title": "restricted_empty", "model": { "name": "Image" }, "visibility": { "id": "RESTRICTED" } }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_restricted_published" } }
+{ "id": "object_restricted_published", "title": "restricted_published", "model": { "name": "Image" }, "visibility": { "id": "RESTRICTED" }, "published": true }
+{ "index": { "_index": "object_visibility", "_type": "_doc", "_id": "object_restricted_unpublished" } }
+{ "id": "object_restricted_unpublished", "title": "restricted_unpublished", "model": { "name": "Image" }, "visibility": { "id": "RESTRICTED" }, "published": false }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_open_empty" } }
+{ "id": "link_to_open_empty", "target_index": "object_visibility", "target_id": "object_open_empty", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_open_published" } }
+{ "id": "link_to_open_published", "target_index": "object_visibility", "target_id": "object_open_published", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_open_unpublished" } }
+{ "id": "link_to_open_unpublished", "target_index": "object_visibility", "target_id": "object_open_unpublished", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_authenticated_empty" } }
+{ "id": "link_to_authenticated_empty", "target_index": "object_visibility", "target_id": "object_authenticated_empty", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_authenticated_published" } }
+{ "id": "link_to_authenticated_published", "target_index": "object_visibility", "target_id": "object_authenticated_published", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_authenticated_unpublished" } }
+{ "id": "link_to_authenticated_unpublished", "target_index": "object_visibility", "target_id": "object_authenticated_unpublished", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_restricted_empty" } }
+{ "id": "link_to_restricted_empty", "target_index": "object_visibility", "target_id": "object_restricted_empty", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_restricted_published" } }
+{ "id": "link_to_restricted_published", "target_index": "object_visibility", "target_id": "object_restricted_published", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "link_to_restricted_unpublished" } }
+{ "id": "link_to_restricted_unpublished", "target_index": "object_visibility", "target_id": "object_restricted_unpublished", "expires": "2049-12-31T23:59:59Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "expired_link" } }
+{ "id": "expired_link", "target_index": "object_visibility", "target_id": "object_open_published", "expires": "2020-06-01T00:00:00Z" }
+{ "index": { "_index": "shared_links", "_type": "_doc", "_id": "bad_link" } }
+{ "id": "bad_link", "target_index": "object_visibility", "target_id": "object_non_existent_document", "expires": "2049-12-31T23:59:59Z" } 

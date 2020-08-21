@@ -7,16 +7,19 @@ async function getDocForLink(req, res, _next) {
   try {
     const sharedLink = await lookupSharedLink(req);
     if (!validateSharedLink(sharedLink)) {
-      res.status(404);
-      res.send("Not Found");
+      res.status(404).send("Not Found");
       return true;
     }
 
     const doc = await lookupTargetDoc(req, sharedLink);
-    res.set("Content-Type", "application/json");
-    res.status(200);
-    res.postProcess();
-    res.send(doc);
+    if (doc.found) {
+      res.set("Content-Type", "application/json")
+         .status(200)
+         .postProcess()
+         .send(JSON.stringify(doc));
+    } else {
+      res.status(404).send("Not Found");
+    }
   } catch(error) {
     console.error("ERROR: ", error)
     throw error;
@@ -44,14 +47,15 @@ async function lookupSharedLink(req) {
     req.app.get("upstream"),
     `/shared_links/_doc/${linkId}`
   );
-  return JSON.parse(await fetchResult(requestUrl));
+  return await fetchResult(requestUrl);
 }
 
 async function lookupTargetDoc(req, sharedLink) {
-  const docId = sharedLink._source.work_id;
+  const docId = sharedLink._source.target_id;
+  const index = sharedLink._source.target_index;
   const requestUrl = url.resolve(
     req.app.get("upstream"),
-    `/meadow/_doc/${docId}`
+    `/${index}/_doc/${docId}`
   );
   return await fetchResult(requestUrl);
 }
@@ -60,7 +64,7 @@ async function fetchResult(requestUrl) {
   const request = await makeRequest("GET", requestUrl);
   const response = await awsFetch(request);
   const body = await fetchBody(response);
-  return body;
+  return JSON.parse(body);
 }
 
 function fetchBody(response) {
@@ -73,9 +77,9 @@ function fetchBody(response) {
 }
 
 function options(_req, res, _next) {
-  res.set("Content-Type", "application/json");
-  res.postProcess();
-  res.send();
+  res.set("Content-Type", "application/json")
+     .postProcess()
+     .send();
 }
 
 router.get("/:linkId", getDocForLink);
