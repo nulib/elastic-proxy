@@ -20,6 +20,9 @@ jobs:
           paths:
             - ~/elastic-proxy/node_modules
       - run:
+          name: Wait for Elasticsearch
+          command: timeout 60 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:9200)" != "200" ]]; do sleep 5; done' || false
+      - run:
           name: Load fixtures
           command: 'curl --data-binary @"test/fixtures/docs.njson" -H "Content-Type: application/x-ndjson" http://localhost:9200/_bulk'
       - run:
