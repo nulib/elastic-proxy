@@ -8,29 +8,30 @@
     "test": "mocha --timeout 10000"
   },
   "dependencies": {
-    "aws-sdk": "^2.518.0",
+    "aws-sdk": "^2.794.0",
     "aws-serverless-express": "^3.3.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.0",
     "body-parser": "~1.19.0",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "dotenv": "~6.0.0",
+    "debug": "~4.2.0",
+    "dotenv": "~8.2.0",
     "express": "~4.17.1",
     "honeybadger": "~1.4.0",
-    "http-errors": "~1.7.3",
+    "http-errors": "~1.8.0",
     "https": "^1.0.0",
-    "jsonwebtoken": "~8.3.0",
+    "jsonwebtoken": "~8.5.1",
     "lodash.isnull": "~3.0.0",
     "lodash.isobject": "~3.0.2",
+    "lodash.isstring": "4.0.1",
     "morgan": "~1.10.0",
-    "ndjson": "~1.5.0",
+    "ndjson": "~2.0.0",
     "request": "~2.88.0"
   },
   "devDependencies": {
     "chai": "~4.2.0",
     "chai-http": "~4.3.0",
-    "claudia": "~5.6.0",
-    "mocha": "~7.1.1",
-    "nodemon": "~1.19.1"
+    "claudia": "~5.12.0",
+    "mocha": "~8.2.1",
+    "nodemon": "~2.0.6"
   }
 }

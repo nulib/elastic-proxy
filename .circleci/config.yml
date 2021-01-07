@@ -5,6 +5,9 @@ jobs:
     working_directory: ~/elastic-proxy
     docker:
       - image: circleci/node:12
+      - image: bitnami/elasticsearch:6
+        environment:
+          ELASTICSEARCH_HEAP_SIZE: "256m"
     steps:
       - checkout
       - restore_cache:
@@ -17,8 +20,14 @@ jobs:
           paths:
             - ~/elastic-proxy/node_modules
       - run:
+          name: Wait for Elasticsearch
+          command: timeout 60 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:9200)" != "200" ]]; do sleep 5; done' || false
+      - run:
+          name: Load fixtures
+          command: 'curl --data-binary @"test/fixtures/docs.njson" -H "Content-Type: application/x-ndjson" http://localhost:9200/_bulk'
+      - run:
           name: Start server
-          command: SSL_CERT= SSL_KEY= yarn start
+          command: UPSTREAM=http://localhost:9200 SSL_CERT= SSL_KEY= yarn start
           background: true
       - run:
           name: Wait for server
