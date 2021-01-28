@@ -8,7 +8,7 @@
     "test": "mocha --timeout 10000"
   },
   "dependencies": {
-    "aws-sdk": "^2.794.0",
+    "aws-sdk": "^2.832.0",
     "aws-serverless-express": "^3.3.6",
     "axios": "^0.21.0",
     "body-parser": "~1.19.0",
