@@ -8,7 +8,7 @@
     "test": "mocha --timeout 10000"
   },
   "dependencies": {
-    "aws-sdk": "^2.848.0",
+    "aws-sdk": "^2.885.0",
     "aws-serverless-express": "^3.4.0",
     "axios": "^0.21.1",
     "body-parser": "~1.19.0",
@@ -28,10 +28,10 @@
     "request": "~2.88.0"
   },
   "devDependencies": {
-    "chai": "~4.3.0",
+    "chai": "~4.3.4",
     "chai-http": "~4.3.0",
     "claudia": "~5.13.0",
-    "mocha": "~8.3.0",
+    "mocha": "~8.3.2",
     "nodemon": "~2.0.7"
   }
 }
