@@ -16,7 +16,7 @@
     "debug": "~4.3.2",
     "dotenv": "~10.0.0",
     "express": "~4.17.1",
-    "honeybadger": "~1.4.0",
+    "honeybadger": "~1.4.1",
     "http-errors": "~1.8.0",
     "https": "^1.0.0",
     "jsonwebtoken": "~8.5.1",
