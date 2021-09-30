@@ -2,11 +2,8 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
 chai.use(chaiHttp);
-const jwt = require('jsonwebtoken');
 const server = 'http://localhost:3334/'
 const query = {query:{bool:{must:[{bool:{must:[{match:{"model.name":"Image"}}]}}]}}}
-
-const token = jwt.sign('testuser@northwestern.edu', process.env.API_TOKEN_SECRET)
 
 describe('Scroll', () => {
   it('should allow scrolling', done => {
