@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 const urlParse = require("url");
 const util = require("util");
 
-async function awsFetch(request) {
+const awsFetch = (request) => {
   return new Promise((resolve, reject) => {
     var client = new AWS.HttpClient();
     client.handleRequest(
@@ -14,21 +14,21 @@ async function awsFetch(request) {
   });
 }
 
-async function makeRequest(method, url, headers, body) {
+const makeRequest = async (method, url, headers, body) => {
   headers = headers || {};
   body = body || "";
 
-  let chain = new AWS.CredentialProviderChain();
   let request = new AWS.HttpRequest(url, "us-east-1");
   request.method = method;
-  request.headers["Host"] = urlParse.parse(url).host;
-  request.headers["Content-Length"] = new util.TextEncoder().encode(
-    body
-  ).length;
+  request.headers = {
+    "Accept": "application/json, text/plain, */*",
+    "Content-Type": "application/json",
+    "Content-Length": new util.TextEncoder().encode(body).length,
+    "Host": urlParse.parse(url).host,
+    "User-Agent": "nul-dc-api/1.0.0",
+    ...headers
+  };
   request.body = body;
-  for (var header in headers) {
-    request.headers[header] = header[header];
-  }
 
   let credentials = await resolveCredentials();
   let signer = new AWS.Signers.V4(request, "es");
@@ -36,7 +36,7 @@ async function makeRequest(method, url, headers, body) {
   return request;
 }
 
-function resolveCredentials() {
+const resolveCredentials = () => {
   let chain = new AWS.CredentialProviderChain();
   return new Promise((resolve, reject) => {
     chain.resolve((error, credentials) => {

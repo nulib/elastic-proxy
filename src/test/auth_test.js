@@ -3,13 +3,12 @@ const chaiHttp = require('chai-http');
 const expect = chai.expect;
 chai.use(chaiHttp);
 const jwt = require('jsonwebtoken');
-const app = require('../app');
 const server = 'http://localhost:3334/'
 
-describe('Auth', function () {
-  describe('GET /auth/whoami', function () {
-    describe('anonymous', function () {
-      it('should return an empty object', function (done) {
+describe('Auth', () => {
+  describe('GET /auth/whoami', () => {
+    describe('anonymous', () => {
+      it('should return an empty object', (done) => {
         chai.request(server)
           .get('auth/whoami')
           .end(function (err, res) {
@@ -22,8 +21,8 @@ describe('Auth', function () {
     });
 
     describe('logged in', () => {
-      let token = jwt.sign('testuser@northwestern.edu', process.env.API_TOKEN_SECRET)
-      it('API Token', function (done) {
+      let token = jwt.sign('testuser@northwestern.edu', 'test-secret')
+      it('API Token', (done) => {
         chai.request(server)
           .get('auth/whoami')
           .set('X-API-Token', token)

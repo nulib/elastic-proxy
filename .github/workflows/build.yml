@@ -1,0 +1,71 @@
+name: dc-api
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      elasticsearch:
+        image: bitnami/elasticsearch:6
+        env:
+          ELASTICSEARCH_HEAP_SIZE: "256m"
+        ports:
+          - 9200:9200
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            src/node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('src/package-lock.json') }}-
+          restore-keys: |
+            ${{ runner.os }}-npm-${{ hashFiles('src/package-lock.json') }}-
+            ${{ runner.os }}-npm-
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./src
+      - uses: ifaxity/wait-on-action@v1
+        with:
+          resource: http://localhost:9200
+      - name: Load fixtures
+        run: 'curl --data-binary @"test/fixtures/docs.njson" -H "Content-Type: application/x-ndjson" http://localhost:9200/_bulk'
+        working-directory: ./src
+      - name: Start server
+        run: ./bin/www &
+        working-directory: ./src
+        env:
+          API_TOKEN_SECRET: test-secret
+          AWS_ACCESS_KEY_ID: test-access-key-id
+          AWS_SECRET_ACCESS_KEY: test-secret-access-key
+          SSL_CERT: ""
+          SSL_KEY: ""
+          UPSTREAM: http://localhost:9200
+      - uses: ifaxity/wait-on-action@v1
+        with:
+          resource: http://localhost:3334/auth/whoami
+      - name: Run tests
+        run: npm run-script test
+        working-directory: ./src
+  tflint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: Checkout source code
+    - uses: actions/cache@v2
+      name: Cache plugin dir
+      with:
+        path: ~/.tflint.d/plugins
+        key: tflint-${{ hashFiles('.tflint.hcl') }}
+    - uses: terraform-linters/setup-tflint@v1
+      name: Setup tflint
+    - name: Show version
+      run: tflint --version
+    - name: Check Terraform Manifests
+      run: |
+        terraform init -backend=false -input=false
+        tflint --init
+        tflint -f compact
+      working-directory: ./terraform

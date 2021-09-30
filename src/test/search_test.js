@@ -17,7 +17,7 @@ const extractPublished = (res) => {
   return res.body.hits.hits.map((doc) => doc._source.published);
 }
 
-const token = jwt.sign('testuser@northwestern.edu', process.env.API_TOKEN_SECRET)
+const token = jwt.sign('testuser@northwestern.edu', 'test-secret')
 
 describe('Search', () => {
   describe('GET /search', function() {
@@ -121,7 +121,7 @@ describe('Search', () => {
               done();
             });
         });
-  
+
         it(`should retrieve an open_published document with ${visibility} visibility`, done => {
           chai.request(server)
             .get(`search/${visibility}_visibility/_doc/${visibility}_open_published`)
@@ -132,7 +132,7 @@ describe('Search', () => {
               done();
             });
         });
-  
+
         it(`should not retrieve an open_unpublished document with ${visibility} visibility`, done => {
             chai.request(server)
             .get(`search/${visibility}_visibility/_doc/${visibility}_open_unpublished`)
@@ -154,7 +154,7 @@ describe('Search', () => {
               done();
             });
       });
-  
+
         it(`should retrieve an authenticated_published document with ${visibility} visibility`, done => {
           chai.request(server)
             .get(`search/${visibility}_visibility/_doc/${visibility}_authenticated_published`)
@@ -165,7 +165,7 @@ describe('Search', () => {
               done();
             });
         });
-  
+
         it(`should not retrieve an authenticated_unpublished document with ${visibility} visibility`, done => {
           chai.request(server)
             .get(`search/${visibility}_visibility/_doc/${visibility}_authenticated_unpublished`)
@@ -185,7 +185,7 @@ describe('Search', () => {
               done();
             });
         });
-  
+
         it(`should not retrieve a restricted_published document with ${visibility} visibility`, done => {
           chai.request(server)
             .get(`search/${visibility}_visibility/_doc/${visibility}_restricted_published`)
@@ -195,7 +195,7 @@ describe('Search', () => {
               done();
             });
         });
-  
+
         it(`should not retrieve a restricted_unpublished document with ${visibility} visibility`, done => {
           chai.request(server)
             .get(`search/${visibility}_visibility/_doc/${visibility}_restricted_unpublished`)
