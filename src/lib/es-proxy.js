@@ -1,5 +1,6 @@
 const AWS = require("aws-sdk");
 const url = require("url");
+const isArray = require("lodash.isarray");
 const isNull = require("lodash.isnull");
 const isObject = require("lodash.isobject");
 const isString = require("lodash.isstring");
@@ -79,10 +80,21 @@ class ESProxy {
     let wrapFunction = (doc) => {
       if (doc.scroll_id) { return doc; }
       doc.query = this.filter(doc.query || { match_all: {} });
+      doc.track_total_hits = true;
       return doc;
     }
-    if (payload.map) {
-      return payload.map(wrapFunction);
+
+    if (isArray(payload)) {
+      if (payload.length > 1) {
+        let result = [];
+        for (var i = 0; i < payload.length; i += 2) {
+          result.push(payload[i]);
+          result.push(wrapFunction(payload[i+1]));
+        }
+        return result;
+      } else {
+        return this.wrapQuery(payload[0]);
+      }
     } else if (isObject(payload)) {
       return wrapFunction(payload);
     } else {

@@ -1,5 +1,5 @@
 locals {
-  source_files    = fileset(path.module, "src/{*.js,lib/*.js,routes/*.js,package.json,package-lock.json}")
+  source_files    = fileset(path.module, "../src/**")
   source_sha      = sha1(join("", [for f in local.source_files : sha1(file(f))]))
 }
 
@@ -54,7 +54,7 @@ resource "aws_iam_policy" "proxy_lambda_policy" {
 }
 
 resource "aws_iam_role" "proxy_lambda_role" {
-  name                  = "${local.namespace}-dc-api-policy"
+  name                  = "${local.namespace}-dc-api"
   assume_role_policy    = data.aws_iam_policy_document.lambda_assume_role.json
   tags                  = local.tags
 }
