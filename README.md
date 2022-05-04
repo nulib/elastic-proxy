@@ -1,5 +1,5 @@
 # elastic-proxy
-This node express application acts as an OpenAM authenticating proxy server between the [NextGen Front End React application](https://github.com/nulib/next-gen-front-end-react) and the Elasticsearch index.
+This node express application acts as an OpenAM authenticating proxy server between the [NextGen Front End React application](https://github.com/nulib/next-gen-front-end-react) and the OpenSearch index.
 
 ## Setup
 
@@ -8,7 +8,7 @@ This node express application acts as an OpenAM authenticating proxy server betw
 ```bash
 $ git clone git@github.com:nulib/elastic-proxy.git
 $ cd elastic-proxy
-$ yarn install
+$ npm install
 ```
 
 ### Running in Development Mode
@@ -22,7 +22,7 @@ API_TOKEN_SECRET=[SOME_LONG_SUPER_SECRET_TOKEN]
 
 Then run
 ```bash
-$ yarn start
+$ npm run-script start
 ```
 
 ### Checking the Server
@@ -41,12 +41,12 @@ $ yarn start
 
 ### Running the test suite
 
-1. Make sure the Elasticsearch test server is running:
+1. Make sure the OpenSearch test server is running:
 
     ```bash
-    $ devstack -t up -d elasticsearch
+    $ devstack -t up -d opensearch
     ```
-2. Add the test fixtures to the Elasticsearch test server:
+2. Add the test fixtures to the OpenSearch test server:
 
     ```bash
     $ curl --data-binary @"test/fixtures/docs.njson" \
@@ -58,17 +58,17 @@ $ yarn start
 4. Start the elastic-proxy server pointing to the test data:
 
     ```bash
-    $ UPSTREAM=http://localhost:9202/ SSL_CERT= SSL_KEY= API_TOKEN_SECRET=TEST_TOKEN yarn start
+    $ UPSTREAM=http://localhost:9202/ SSL_CERT= SSL_KEY= API_TOKEN_SECRET=test-secret npm run-script start
     ```
 5. In another window or tab, run the test suite:
 
     ```bash
-    $ API_TOKEN_SECRET=TEST_TOKEN yarn test
+    $ API_TOKEN_SECRET=test-secret npm run-script test
     ```
 
 ### Use
 
-Set your client application's Elasticsearch endpoint to `https://devbox.library.northwestern.edu:3334/search/`
+Set your client application's OpenSearch endpoint to `https://devbox.library.northwestern.edu:3334/search/`
 
 ## Note
 
