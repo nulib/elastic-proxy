@@ -6,6 +6,8 @@ terraform {
 
 provider "aws" { }
 
+data "aws_region" "current" { }
+
 locals {
   namespace             = module.core.outputs.stack.namespace
   tags                  = merge(

@@ -3,3 +3,5 @@ node_modules
 
 .terraform
 terraform/package
+terraform/*.tfvars
+terraform/*.plan

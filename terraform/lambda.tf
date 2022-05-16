@@ -83,9 +83,9 @@ resource "aws_lambda_function" "proxy_lambda" {
   environment {
     variables = {
       UPSTREAM            = module.data_services.outputs.elasticsearch.endpoint
-      API_TOKEN_SECRET    = local.secrets.api_token_secret
-      NUSSO_API_KEY       = local.secrets.agentless_sso_key
-      HONEYBADGER_API_KEY = local.secrets.honeybadger_api_key
+      API_TOKEN_SECRET    = var.api_token_secret
+      NUSSO_API_KEY       = var.agentless_sso_key
+      HONEYBADGER_API_KEY = var.honeybadger_api_key
       HONEYBADGER_ENV     = terraform.workspace
     }
   }
