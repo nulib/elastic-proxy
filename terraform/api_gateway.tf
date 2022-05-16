@@ -44,11 +44,11 @@ resource "aws_lambda_permission" "allow_api_gateway_invocation" {
 }
 
 data "aws_acm_certificate" "api_gateway_certificate" {
-  domain = join(".", [local.secrets.certificate_hostname, module.core.outputs.vpc.public_dns_zone.name])
+  domain = join(".", [var.certificate_hostname, module.core.outputs.vpc.public_dns_zone.name])
 }
 
 resource "aws_api_gateway_domain_name" "dc_api" {
-  domain_name       = join(".", [local.secrets.hostname, module.core.outputs.vpc.public_dns_zone.name])
+  domain_name       = join(".", [var.hostname, module.core.outputs.vpc.public_dns_zone.name])
   certificate_arn   = data.aws_acm_certificate.api_gateway_certificate.arn
   tags              = local.tags
 }
