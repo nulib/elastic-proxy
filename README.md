@@ -58,7 +58,7 @@ $ npm run-script start
 4. Start the elastic-proxy server pointing to the test data:
 
     ```bash
-    $ UPSTREAM=http://localhost:9202/ SSL_CERT= SSL_KEY= API_TOKEN_SECRET=test-secret npm run-script start
+    $ UPSTREAM=http://localhost:9202/ SSL_CERT= SSL_KEY= API_TOKEN_SECRET=test-secret READING_ROOM_IPS=169.254.0.1 npm run-script start
     ```
 5. In another window or tab, run the test suite:
 

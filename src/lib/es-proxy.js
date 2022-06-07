@@ -26,6 +26,14 @@ class ESProxy {
     return isNull(this.req.user);
   }
 
+  isReadingRoom() {
+    const forwardedFor = this.req.headers['x-forwarded-for']?.split(/\,/);
+    const requestIps = new Array(this.req._remoteAddress).concat(forwardedFor).filter((v) => v !== undefined);
+    const readingRoomIps = this.req.app.get("reading-room-ips");
+    const overlap = requestIps.filter(x => readingRoomIps.includes(x));
+    return overlap.length > 0;
+  }
+
   passthruHeaders() {
     let result = {};
     this.allowedHeaders.forEach((header) => {
@@ -59,7 +67,16 @@ class ESProxy {
     const matchTheQuery = query;
     const beUnpublished = { term: { published: false } }
 
-    if (this.isNotLoggedIn()) {
+    if (this.isReadingRoom()) {
+      console.debug("Request coming from reading room. Allowing access to all works.")
+      return {
+        bool: {
+          must: [matchTheQuery],
+          must_not: [beUnpublished]
+        }
+      }
+    } else if (this.isNotLoggedIn()) {
+      console.debug("Request is anonymous. Allowing access to public works.")
       return {
         bool: {
           must: [matchTheQuery, haveVisibility('open')],
@@ -67,6 +84,7 @@ class ESProxy {
         }
       }
     } else {
+      console.debug("Request is authorized. Allowing access to restricted works.")
       return {
         bool: {
           must: [matchTheQuery],

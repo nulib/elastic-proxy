@@ -20,3 +20,8 @@ variable "honeybadger_api_key" {
   type    = string
   default = ""
 }
+
+variable "reading_room_ips" {
+  type    = string
+  default = ""
+}

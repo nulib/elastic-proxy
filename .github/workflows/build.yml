@@ -44,6 +44,7 @@ jobs:
           API_TOKEN_SECRET: test-secret
           AWS_ACCESS_KEY_ID: test-access-key-id
           AWS_SECRET_ACCESS_KEY: test-secret-access-key
+          READING_ROOM_IPS: "169.254.0.1"
           SSL_CERT: ""
           SSL_KEY: ""
           UPSTREAM: http://localhost:9200

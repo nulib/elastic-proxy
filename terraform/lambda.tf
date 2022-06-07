@@ -87,6 +87,7 @@ resource "aws_lambda_function" "proxy_lambda" {
       NUSSO_API_KEY       = var.agentless_sso_key
       HONEYBADGER_API_KEY = var.honeybadger_api_key
       HONEYBADGER_ENV     = terraform.workspace
+      READING_ROOM_IPS    = var.reading_room_ips
     }
   }
 }
