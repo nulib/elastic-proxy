@@ -316,5 +316,30 @@ describe("Search", () => {
           });
       });
     });
+
+    describe("reading room", () => {
+      it("should return public, authenticated, and restricted results", (done) => {
+        chai
+          .request(server)
+          .post("search/scalar_visibility,object_visibility/_search")
+          .set("Content-Type", "application/json")
+          .set('X-Forwarded-For', '169.254.0.1')
+          .send(query)
+          .end((err, res) => {
+            expect(err).to.be.null;
+            expect(res).to.have.status(200);
+            expect(res.body.hits.total.value).to.equal(12);
+            let visibilities = extractVisibilities(res);
+            expect(visibilities).to.include("open");
+            expect(visibilities).to.include("authenticated");
+            expect(visibilities).to.include("restricted");
+            let published = extractPublished(res);
+            expect(published).to.include(undefined);
+            expect(published).to.include(true);
+            expect(published).not.to.include(false);
+            done();
+          });
+      });
+    });
   });
 });

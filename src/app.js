@@ -52,6 +52,7 @@ app.set(
   "nusso-redirect-url",
   process.env.NUSSO_REDIRECT_URL || "nussoRedirectUrl"
 );
+app.set("reading-room-ips", process.env.READING_ROOM_IPS?.split(/\s*,\s*/) || [])
 
 app.use(logger(process.env.LOGGING_MODE || "short"));
 app.use(bodyParser.json({ limit: "5mb" }));
