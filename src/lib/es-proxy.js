@@ -172,9 +172,9 @@ class ESProxy {
       case 'open':
         return false;
       case 'restricted':
-        return true;
+        return !this.isReadingRoom();
       case 'authenticated':
-        return this.isNotLoggedIn(); 
+        return this.isNotLoggedIn() &! this.isReadingRoom(); 
       default:
         return false;
     }
