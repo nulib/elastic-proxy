@@ -74,7 +74,7 @@ resource "aws_lambda_function" "proxy_lambda" {
   function_name = "${local.namespace}-dc-api"
   role          = aws_iam_role.proxy_lambda_role.arn
   handler       = "index.handler"
-  runtime       = "nodejs14.x"
+  runtime       = "nodejs16.x"
   memory_size   = 128
   timeout       = 5
   publish       = true
