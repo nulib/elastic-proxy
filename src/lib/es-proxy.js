@@ -120,18 +120,14 @@ class ESProxy {
     }
   }
 
-  extractQuery(str) {
-    var qMark = str.indexOf("?");
-    return qMark == -1 ? null : str.slice(qMark + 1);
-  }
-
   async makeRequest() {
     let requestHeaders = this.passthruHeaders();
     let requestUrl = url.resolve(this.req.app.get("upstream"), this.req.path);
-    let queryString = this.extractQuery(this.req.originalUrl);
-    if (!isNull(queryString)) {
-      requestUrl = [requestUrl, queryString].join("?");
-    }
+
+    let parsedUrl = url.parse(this.req.originalUrl);
+    let query = new url.URLSearchParams(parsedUrl.query);
+    query.delete('q');
+    requestUrl = [requestUrl, query.toString()].join("?");
 
     let body;
     if (
