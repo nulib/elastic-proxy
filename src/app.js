@@ -62,6 +62,11 @@ app.use(cookieParser());
 app.use(authUtils.user());
 app.use(postProcess());
 
+app.use(function (req, _res, next) {
+  req.url = req.url.replace(/^\/api\/v1/, '');
+  next();
+});
+
 app.use("/auth", authRouter);
 app.use("/explain", explainRouter);
 app.use("/resolve", resolveRouter);
