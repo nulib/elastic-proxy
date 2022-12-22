@@ -18,7 +18,7 @@
     "honeybadger": "^1.4.1",
     "http-errors": "^1.8.0",
     "https": "^1.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash.isarray": "^4.0.0",
     "lodash.isnull": "^3.0.0",
     "lodash.isobject": "^3.0.2",
